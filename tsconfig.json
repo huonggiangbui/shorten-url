@@ -1,26 +1,62 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "noResolve": false,
+      "noImplicitAny": false,
+      "removeComments": true,
+      "sourceMap": true,
+      "allowJs": true,
+      "jsx": "react"
+    }
+  },
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2016",
+    "module": "esnext",
     "lib": [
       "dom",
-      "dom.iterable",
-      "esnext"
+      "es6",
+      "es2017",
+      "esnext.asynciterable"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
+    "sourceMap": true,
+    "checkJs": false,
+    "outDir": "./dist",
+    "moduleResolution": "node",
+    "declaration": false,
+    "composite": false,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "rootDir": ".",
+    "allowJs": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "esModuleInterop": false,
+    "noUnusedLocals": false,
   },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ],
   "include": [
-    "src"
+    "./server/**/*.tsx",
+    "./server/**/*.ts",
   ]
 }
