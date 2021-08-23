@@ -6,11 +6,11 @@ import { ContextType } from './ContextType';
 
 @Resolver(Link)
 export class LinkResolver {
-  @Query(() => String, { complexity: 1 })
+  @Query(() => String)
   async getUrl(@Arg("urlCode") urlCode: string): Promise<String | null> {
     const url = await Link.findOne({ where: { urlCode } })
     if (!url) {
-      return null
+      throw new Error('No URL found')
     }
     return url.longUrl
   }

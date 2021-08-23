@@ -24,3 +24,5 @@ yarn-error.log*
 /package-lock.json
 /.env.development
 /.env.production
+/server.csr
+/hostkey.pem
