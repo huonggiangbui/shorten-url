@@ -4,16 +4,13 @@ import { Entity, Column, PrimaryColumn, CreateDateColumn, BaseEntity } from "typ
 @ObjectType()
 @Entity()
 export class Link extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ unique: true })
+  @Field()
   urlCode!: string;
 
   @Field()
   @Column()
   longUrl!: string;
-
-  @Field()
-  @Column()
-  shortUrl!: string;
 
   @CreateDateColumn()
   createdAt?: Date;

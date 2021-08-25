@@ -1,8 +1,7 @@
-import { Query, Resolver, Mutation, Arg, Ctx } from 'type-graphql';
+import { Query, Resolver, Mutation, Arg } from 'type-graphql';
 import { Link } from '../entity/Link';
 import { nanoid } from 'nanoid';
 import { urlInput } from './input/urlInput';
-import { ContextType } from './ContextType';
 
 @Resolver(Link)
 export class LinkResolver {
@@ -20,21 +19,17 @@ export class LinkResolver {
     @Arg("input") {
       urlCode,
       longUrl
-    }: urlInput,
-    @Ctx() ctx: ContextType
+    }: urlInput
   ): Promise<Link> {
-    let urlShorten = urlCode
+    let urlShorten = urlCode;
 
     if(!urlCode) {
       urlShorten = nanoid(12)
     }
-
-    let host = ctx.req.protocol + "://" + ctx.req.get("host")
-
+    
     const newUrl = await Link.create({
       urlCode: urlShorten,
       longUrl,
-      shortUrl: `${host}/${urlShorten}`
     }).save();
 
     return newUrl;

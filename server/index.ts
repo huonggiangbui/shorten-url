@@ -55,7 +55,7 @@ const main = async () => {
           "https://shorten.vietcode.org",
           "http://shorten.vietcode.org",
         ]
-        : [`http://localhost:${config.port}`, "http://localhost:3000"],
+        : [`http://localhost:${config.port}/${apolloServer.graphqlPath}`, "http://localhost:3000"],
       credentials: true,
     },
   })
