@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import { gql, useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
+import { Typography } from "@material-ui/core";
 
 export default function RedirectPage() {
   let { urlCode } = useParams() as any;
@@ -18,11 +19,16 @@ export default function RedirectPage() {
     }
   }, [urlCode, data])
 
-  if (!urlCode) return 'You need to enter a valid url path';
   if (loading) return null;
-  if (error) return `Error! ${error.message}`;
+  if (error) return (
+    <Typography variant="h5">
+      Error! {error.message}
+    </Typography>
+  );
   return (
-    <h1>Going to redirect...</h1>
+    <Typography variant="h5">
+      Going to redirect...
+    </Typography>
   )
 }
 

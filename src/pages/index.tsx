@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { gql, useMutation } from "@apollo/client";
-import { Button, makeStyles, TextField, Typography, InputAdornment } from "@material-ui/core";
+import { Button, makeStyles, TextField, Typography, InputAdornment, Tooltip } from "@material-ui/core";
 import { Check as CheckIcon } from "@material-ui/icons";
 
 import { validateUrl, validateUrlCode } from "../utils/validator";
@@ -39,7 +39,7 @@ const initInput = {
 export default function HomePage() {
   const classes = useStyles();
   const [input, setInput] = useState<IInput>(initInput);
-  const [shortUrl, setShortUrl] = useState("")
+  const [shortUrl, setShortUrl] = useState<string>();
   const [createUrl, { data, loading, error }] = useMutation(CREATEURL_MUTATION);
 
   const valid = useMemo(() => {
@@ -79,12 +79,44 @@ export default function HomePage() {
   useEffect(() => {
     if (data) {
       setInput(initInput)
-      setShortUrl(data.createUrl.urlCode)
+      if (process.env.NODE_ENV === "development") {
+        setShortUrl(`http://localhost:3000/${data.createUrl.urlCode}`)
+      } else {
+        setShortUrl(`https://shorten.vietcode.org/${data.createUrl.urlCode}`)
+      }
     }
+
     if (error) {
       console.log(error.message);
     }
   }, [data, error]);
+
+  const ShortUrlComponent = () => {
+    const [copiedText, setCopiedText] = useState<string>();
+
+    const onCopy = () => {
+      setCopiedText(shortUrl)
+      navigator.clipboard.writeText(shortUrl)
+    }
+
+    return (
+      <Typography className={classes.label}>
+        Your shorten URL is: 
+        <Tooltip
+          title={
+            copiedText === shortUrl
+              ? "Copied!"
+              : "Copy To Clipboard"
+          }
+          placement="top"
+        >
+          <Button onClick={onCopy}>
+            {shortUrl}
+          </Button>
+        </Tooltip>
+      </Typography>
+    )
+  }
 
   return (
     <>
@@ -149,9 +181,10 @@ export default function HomePage() {
           {loading ? "Loading please wait" : "Tiếp tục"}
         </Button>
       </form>
-      <Typography variant="h5" className={classes.label}>
-        {data ? `Your short URL is: ${process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://shorten.vietcode.org"}/${shortUrl}` : ""}
-      </Typography>
+      {data 
+        ? <ShortUrlComponent />
+        : ""
+      }
     </>
   )
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from './components/';
-import RedirectPage from './components/redirect';
+import HomePage from './pages/';
+import RedirectPage from './pages/redirect';
 
 function App() {
   return (
