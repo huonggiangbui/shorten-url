@@ -178,7 +178,7 @@ export default function HomePage() {
           }
           size="large"
         >
-          {loading ? "Loading please wait" : "Tiếp tục"}
+          {loading ? "Loading..." : "Tiếp tục"}
         </Button>
       </form>
       {data 
