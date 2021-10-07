@@ -27,3 +27,4 @@ yarn-error.log*
 /server.csr
 /hostkey.pem
 /ormconfig.json
+/server.cnf
