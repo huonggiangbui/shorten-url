@@ -24,7 +24,7 @@ const main = async () => {
 
   const configurations:TConfig = {
     // Note: You may need sudo to run on port 443
-    production: { ssl: true, port: 443, hostname: 'vietcode.org' },
+    production: { ssl: true, port: 443, hostname: 'vc-shorten-url.herokuapp.com' },
     development: { ssl: false, port: 4000, hostname: 'localhost' },
   };
 
@@ -52,8 +52,8 @@ const main = async () => {
     {
       origin: process.env.NODE_ENV === "production"
         ? [
-          "https://shorten.vietcode.org",
-          "http://shorten.vietcode.org",
+          "https://vc-shorten-url.herokuapp.com/",
+          "http://vc-shorten-url.herokuapp.com/",
         ]
         : [`http://localhost:${config.port}/${apolloServer.graphqlPath}`, "http://localhost:3000"],
       credentials: true,
