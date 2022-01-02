@@ -28,3 +28,4 @@ yarn-error.log*
 /hostkey.pem
 /ormconfig.json
 /server.cnf
+/server/ssl
