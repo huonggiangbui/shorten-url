@@ -15,9 +15,12 @@ const connectionOptions = [{
     entities: DATABASE_ENTITIES,
     synchronize: true,
     logging: process.env.NODE_ENV !== "production",
-    // ssl: process.env.DATABASE_SSL === "true" && {
-    //   rejectUnauthorized: false
-    // },
+    ssl: process.env.DATABASE_SSL,
+    dialectOptions: {
+      "ssl": {
+        "require": true
+      }
+    }
   }
 ];
 
