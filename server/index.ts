@@ -16,8 +16,6 @@ type TConfig = {
     ssl: boolean,
     port: number,
     hostname: string,
-    key?: any,
-    cert?: any
   }
 }
 
