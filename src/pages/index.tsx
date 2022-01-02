@@ -117,7 +117,7 @@ export default function HomePage() {
       if (process.env.NODE_ENV === "development") {
         setShortUrl(`http://localhost:3000/${data.createUrl.urlCode}`)
       } else {
-        setShortUrl(`https://shorten.vietcode.org/${data.createUrl.urlCode}`)
+        setShortUrl(`https://vc-shorten-url.herokuapp.com/${data.createUrl.urlCode}`)
       }
     }
 
@@ -159,7 +159,7 @@ export default function HomePage() {
         Create Short Links!
       </Typography>
       <Typography className={classes.subheading} style={{ paddingBottom: "32px"}}>
-        This is a custom short link personalization tool provided by Vietcode Organization that enables you to target, engage, and drive more visitors. Get started now.
+        This is a custom short link personalization tool that enables you to target, engage, and drive more visitors. Get started now.
       </Typography>
       <form noValidate autoComplete="off" onSubmit={handleSubmit} className={classes.form}>
         <TextField
@@ -190,8 +190,7 @@ export default function HomePage() {
           className={classes.submit}
           disabled={
             !Object.values(valid).reduce((acc, cur) => acc && cur, true) ||
-            loading ||
-            data
+            loading
           }
           size="large"
         >

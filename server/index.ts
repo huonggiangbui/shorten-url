@@ -24,7 +24,7 @@ const main = async () => {
 
   const configurations:TConfig = {
     // Note: You may need sudo to run on port 443
-    production: { ssl: true, port: 443, hostname: 'vc-shorten-url.herokuapp.com' },
+    production: { ssl: false, port: 443, hostname: 'vc-shorten-url.herokuapp.com' },
     development: { ssl: false, port: 4000, hostname: 'localhost' },
   };
 
