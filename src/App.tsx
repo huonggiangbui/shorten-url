@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from './pages/';
-import RedirectPage from './pages/redirect';
+// import RedirectPage from './pages/redirect';
 
 function App() {
   return (
@@ -11,9 +11,9 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route path="/:urlCode">
+        {/* <Route path="/:urlCode">
           <RedirectPage />
-        </Route>
+        </Route> */}
       </Switch>
     </div>
   );
