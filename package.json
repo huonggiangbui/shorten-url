@@ -39,7 +39,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"nodemon --exec ts-node server/index.ts\"",
+    "start": "serve -s build",
+    "dev": "concurrently \"react-scripts start\" \"nodemon --exec ts-node server/index.ts\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
