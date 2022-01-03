@@ -21,7 +21,6 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 
 const main = async () => {
-  console.log(process.env.PORT);
   const PORT = process.env.PORT || 3000;
   
   // useContainer(Container);
@@ -88,12 +87,7 @@ const main = async () => {
     path: "/api/gql",
     app,
     cors: {
-            origin: process.env.NODE_ENV === "production"
-        ? [
-          "https://vc-shorten-url.herokuapp.com/",
-          "http://vc-shorten-url.herokuapp.com/",
-        ]
-        : [`http://localhost:${PORT}/${apollo.graphqlPath}`, "http://localhost:3000"],
+      origin: process.env.ALLOWED_ORIGINS?.split(","),
       credentials: true,
     },
   });
