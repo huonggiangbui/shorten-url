@@ -21,7 +21,8 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 
 const main = async () => {
-  const PORT = process.env.PORT || 4000;
+  console.log(process.env.PORT);
+  const PORT = process.env.PORT || 3000;
   
   // useContainer(Container);
   
