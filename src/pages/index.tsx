@@ -117,7 +117,7 @@ export default function HomePage() {
       if (process.env.NODE_ENV === "development") {
         setShortUrl(`http://localhost:3000/${data.createUrl.urlCode}`)
       } else {
-        setShortUrl(`https://vc-shorten-url.herokuapp.com/${data.createUrl.urlCode}`)
+        setShortUrl(`https://vc-shorturl.netlify.app/${data.createUrl.urlCode}`)
       }
     }
 
