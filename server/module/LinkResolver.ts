@@ -9,7 +9,7 @@ export class LinkResolver {
   async getUrl(@Arg("urlCode") urlCode: string): Promise<String | null> {
     const url = await Link.findOne({ where: { urlCode } })
     if (!url) {
-      throw new Error('No URL found')
+      throw new Error(`URL https://vc-shorten-url.herokuapp.com/${urlCode} not found`)
     }
     return url.longUrl
   }

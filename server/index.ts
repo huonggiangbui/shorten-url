@@ -2,12 +2,12 @@ import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
 import * as express from 'express';
 import { buildSchema } from 'type-graphql';
-import { createConnection, useContainer } from 'typeorm';
+import { createConnection } from 'typeorm';
 import { LinkResolver } from './module/LinkResolver';
 import * as dotenv from 'dotenv';
-import fs from 'fs';
-import https from 'https';
-import * as http from 'http';
+// import fs from 'fs';
+// import https from 'https';
+// import * as http from 'http';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 

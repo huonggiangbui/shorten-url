@@ -113,6 +113,7 @@ export default function HomePage() {
 
   useEffect(() => {
     if (data) {
+      console.log(data, loading, error)
       setInput(initInput)
       if (process.env.NODE_ENV === "development") {
         setShortUrl(`http://localhost:3000/${data.createUrl.urlCode}`)

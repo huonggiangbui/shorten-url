@@ -11,7 +11,7 @@ function App() {
         <Route exact path="/">
           <HomePage />
         </Route>
-        <Route path="/:urlCode">
+        <Route exact path="/:urlCode">
           <RedirectPage />
         </Route>
       </Switch>
