@@ -38,49 +38,13 @@ const main = async () => {
   
   app.set("trust proxy", 1);
   const schema = await buildSchema({
-      resolvers: [LinkResolver]
-    })
-
-  // app.get("/confirm/:id", async (req, res) => {
-  //   const { id: confirm_id } = req.params;
-
-  //   res.redirect("https://www.projectube.org/signup/confirm?id=" + confirm_id);
-  // });
+    resolvers: [LinkResolver]
+  })
 
   const apollo = new ApolloServer({
     schema: await schema,
     playground: process.env.PLAYGROUND === "true",
     introspection: process.env.PLAYGROUND === "true",
-
-    // context: async ({ req, res }: { req: Request; res: Response }) => {
-    //   let user: Account | null;
-    //   if (!req.headers.authorization) return { req, res, user: null };
-
-    //   //send request to auth service to verify access_token and then get the data from auth service
-    //   const account: AuthResponse | null = await axios
-    //     .get(process.env.AUTH_URI + "/verify", {
-    //       headers: {
-    //         Authorization: req.headers.authorization,
-    //       },
-    //     })
-    //     .then((res) => {
-    //       return { ...res.data };
-    //     })
-    //     .catch(() => {
-    //       return null;
-    //     });
-
-    //   if (account) {
-    //     user = await Account.findOne({ email: account.email });
-    //   }
-
-    //   if (!user) user = null;
-    //   return {
-    //     req,
-    //     res,
-    //     user,
-    //   };
-    // },
   });
 
   apollo.applyMiddleware({
