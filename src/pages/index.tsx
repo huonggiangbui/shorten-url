@@ -113,10 +113,9 @@ export default function HomePage() {
 
   useEffect(() => {
     if (data) {
-      console.log(data, loading, error)
       setInput(initInput)
       if (process.env.NODE_ENV === "development") {
-        setShortUrl(`http://localhost:80/${data.createUrl.urlCode}`)
+        setShortUrl(`http://localhost:3000/${data.createUrl.urlCode}`)
       } else {
         setShortUrl(`https://vc-shorten-url.herokuapp.com/${data.createUrl.urlCode}`)
       }
