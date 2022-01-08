@@ -1,8 +1,5 @@
 const DATABASE_TYPE = "postgres";
-const DATABASE_ENTITIES =
-  process.env.NODE_ENV === "production" ?
-  ["dist/server/entity/*.js"] :
-  ["server/entity/*.ts"];
+const DATABASE_ENTITIES = ["server/entity/*.ts"]
 
 const connectionOptions = [{
     name: "default",
